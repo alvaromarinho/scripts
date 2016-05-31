@@ -25,7 +25,7 @@ echo
 
 sudo apt-get update && sudo apt-get upgrade -y
 clear
-sudo apt-get install lamp-server^
+sudo apt-get install lamp-server^ phpmyadmin php-mbstring php7.0-mbstring php-gettext
 clear
 
 usuario=`whoami`
@@ -40,8 +40,10 @@ sudo cp -r /usr/share/phpmyadmin/ /var/www/phpmyadmin
 sudo a2enmod rewrite
 
 cd /etc/apache2/sites-available/
-
 sudo sed -i 's/html/ /g' 000-default.conf
+
+cd ../
+sudo sed -i '/sts=4 sr noet/a Include /etc/phpmyadmin/apache.conf' apache2.conf
 
 echo "<?php echo 'Its work!'; ?>" | sudo tee /var/www/test.php
 sudo service apache2 restart 
