@@ -1,7 +1,7 @@
 clear
 echo
 echo
-echo "***** SCRIPT DE INSTALAÇÃO DO LARAVEL *****"
+echo "***** LARAVEL INSTALATION AND CONFIGURATION *****"
 echo
 echo "Continue (Y*/N)?"
 
