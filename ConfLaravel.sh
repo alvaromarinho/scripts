@@ -30,7 +30,7 @@ echo
 echo "Wait a minute . . ."
 echo
 
-curl -sS https://getcomposer.org/installer | php
+sudo curl -sS https://getcomposer.org/installer | php
 clear
 
 sudo mv composer.phar /usr/local/bin/composer
@@ -42,11 +42,11 @@ read foldername
 echo
 echo "Wait a minute . . ."
 echo
-composer create-project laravel/laravel $foldername --prefer-dist
+sudo composer create-project laravel/laravel $foldername --prefer-dist
 clear
 
+sudo chmod -R 777 $foldername/
 cd $foldername
-sudo chmod -R 777 storage/
 
 cd /etc/apache2/sites-available
 sudo touch $foldername.dev.conf
@@ -72,4 +72,3 @@ sudo service apache2 reload
 clear
 cd /var/www/$foldername/
 php artisan serve
-
