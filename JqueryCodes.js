@@ -1,12 +1,16 @@
 $(document).ready(function(){
 
-    // CLONE 01
+    // CLONE 01 (Buttons inside divClone)
     var index = 0;
     $("#btnClone").click(function(){
         index++;
-        $("#divClone").after($("#divClone").clone().attr("id","divClone" + index));
 
-        $("#divClone" + index + " :input").val("");
+        $("#divClone")
+        	.clone()
+        	.attr("id","divClone" + index)
+        	.val("")
+        	.insertAfter($('[id^=divClone]:last'));
+
         $("#divClone" + index + " :button")
         	.attr({
         		id: "btnRemoveClone" + index,
@@ -20,7 +24,20 @@ $(document).ready(function(){
         });
     });
     
-    // CLONE 02
-    
+    // CLONE 02 (Fixed buttons outside divClone)
+    var cloneCount = 1;
+    $("#btnClone").click(function(){
+        $('#divClone')
+        .clone()
+        .attr('id', 'divClone'+ cloneCount++)
+        .attr('class', 'divClone')
+        .find("input:text").val("").end()
+        .insertAfter($('[id^=divClone]:last'));
+    });
+
+    $("#remove").click(function(){
+        $('.divClone:last').remove();
+        cloneCount--;
+    });
     
 });
