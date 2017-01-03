@@ -6,18 +6,18 @@ $(document).ready(function(){
         index++;
 
         $("#divClone")
-        	.clone()
-        	.attr("id","divClone" + index)
-        	.val("")
-        	.insertAfter($('[id^=divClone]:last'));
+            .clone()
+            .attr("id","divClone" + index)
+            .val("")
+            .insertAfter($('[id^=divClone]:last'));
 
         $("#divClone" + index + " :button")
-        	.attr({
-        		id: "btnRemoveClone" + index,
-        		name: "btnRemoveClone" + index,
-        	})
-        	.switchClass("btn-success", "btn-danger", 0)
-        	.html("<span class='glyphicon glyphicon-minus'></span>");
+            .attr({
+                id: "btnRemoveClone" + index,
+                name: "btnRemoveClone" + index,
+            })
+            .switchClass("btn-success", "btn-danger", 0)
+            .html("<span class='glyphicon glyphicon-minus'></span>");
 
         $("#btnRemoveClone" + index).click(function(){
             $(this).parent().parent().closest("div").remove();
@@ -28,11 +28,11 @@ $(document).ready(function(){
     var cloneCount = 1;
     $("#btnClone").click(function(){
         $('#divClone')
-        .clone()
-        .attr('id', 'divClone'+ cloneCount++)
-        .attr('class', 'divClone')
-        .find("input:text").val("").end()
-        .insertAfter($('[id^=divClone]:last'));
+            .clone()
+            .attr('id', 'divClone'+ cloneCount++)
+            .attr('class', 'divClone')
+            .find("input:text").val("").end()
+            .insertAfter($('[id^=divClone]:last'));
     });
 
     $("#remove").click(function(){
