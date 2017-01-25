@@ -53,4 +53,23 @@ $(document).ready(function(){
         }
     });
     
+    // BUTTON's VALUE COPY TO CLIPBOARD
+    $("#btnClick").click(function() {
+		var temp = $("<input>");
+		$("body").append(temp);
+		temp.val($(this).val()).select();
+		document.execCommand("copy");
+		temp.remove();
+	});
+
+    // BUTTON CLICK PRESS/UP EVENT
+	$("#btnClick")
+		.mousedown(function() {
+			$(this).find("i").switchClass( "fa-unlock", "fa-lock", 0);
+			$("#msg").show("fast").delay(1000).hide("fast"); // MESSAGE SHOW AND HIDE WITH DELAY
+		})
+		.mouseup(function() {
+			$(this).find("i").switchClass( "fa-lock", "fa-unlock", 0);
+		});
+    
 });
